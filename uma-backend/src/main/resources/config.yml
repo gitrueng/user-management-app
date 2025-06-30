@@ -1,0 +1,38 @@
+app:
+  security:
+    jwt:
+      secret: "404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970" # Same as in application.properties
+      expiration: 86400000 # 24 hours
+      refresh-expiration: 604800000 # 7 days
+      issuer: 'BFN-TCA Botcamp'
+      audience: User Manager
+      prefix: 'Bearer'
+      excluded.urls: /user/login,/user/signup,/user/reset/*,/test/**,/error
+  mail:
+    from: "noreply@usermanager.com"
+    verification-subject: "Verify your email address"
+    reset-password-subject: "Reset your password"
+  cors:
+    allowed-origins:
+      - "http://localhost:3000"
+      - "http://localhost:3001" # Add if you plan to have multiple frontend origins
+    allowed-methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - OPTIONS
+    allowed-headers: "*" # Allows all headers
+    allow-credentials: true
+    max-age: 3600
+
+# Client Configuration for email links
+client:
+  url: http://localhost:3000 # Frontend URL
+  email:
+    verify:
+      param: user/verifyEmail # Path for email verification endpoint
+      expiration: 86_400_000 # 24 hours
+    reset:
+      param: user/resetPassword # Path for password reset endpoint
+      expiration: 600_000 # 10 minutes
