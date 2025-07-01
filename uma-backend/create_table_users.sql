@@ -1,0 +1,18 @@
+CREATE TABLE "Users" (
+    user_id INT NOT NULL GENERATED ALWAYS AS IDENTITY UNIQUE,
+    user_name VARCHAR(50) UNIQUE NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email_verified BOOLEAN DEFAULT FALSE,
+    country_code VARCHAR(5),
+    phone_number VARCHAR(20) UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE "Users"
+ADD COLUMN age INTEGER;
+
+SELECT * FROM "Users";
